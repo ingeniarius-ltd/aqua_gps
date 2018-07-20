@@ -17,7 +17,7 @@ This work is in development at [Ingeniarius, Lda.](http://ingeniarius.pt/) and [
   - kinetic or newer
 - [UUV Simulator](https://uuvsimulator.github.io/)
 - [BlueROV2](https://github.com/fredvaz/bluerov2/tree/bluerov2_no_beacon)
-- [Minion USV](https://github.com/fredvaz/minion_usv)
+- [Minion USV](https://github.com/fredvaz/minion_usv/tree/minionusv_no_hydrophone)
 
 
 
