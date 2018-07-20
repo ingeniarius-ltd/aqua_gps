@@ -14,10 +14,29 @@ This work is in development at [Ingeniarius, Lda.](http://ingeniarius.pt/) and [
 
 - git
 - [ros-\*-desktop-full](http://wiki.ros.org/ROS/Installation)
-  - kinetic or newer
-- [UUV Simulator](https://uuvsimulator.github.io/)
-- [BlueROV2](https://github.com/fredvaz/bluerov2/tree/bluerov2_no_beacon)
+  - kinetic
+- [gazebo](http://gazebosim.org)
+- [UUV Simulator](https://uuvsimulator.github.io/installation.html):
+
+```
+sudo apt install protobuf-compiler protobuf-c-compiler
+cd ~/catkin_ws/src
+git clone https://github.com/uuvsimulator/uuv_simulator.git
+```
+
+- [BlueROV2](https://github.com/fredvaz/bluerov2/tree/bluerov2_no_beacon):
+
+```
+cd ~/catkin_ws/src
+git clone --single-branch -b bluerov2_no_beacon https://github.com/fredvaz/bluerov2
+```
+
 - [Minion USV](https://github.com/fredvaz/minion_usv/tree/minionusv_no_hydrophone)
+
+```
+cd ~/catkin_ws/src
+git clone --single-branch -b minionusv_no_hydrophone https://github.com/fredvaz/minion_usv
+```
 
 
 
