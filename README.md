@@ -16,8 +16,7 @@ This work is in development at [Ingeniarius, Lda.](http://ingeniarius.pt/) and [
 - [ros-\*-desktop-full](http://wiki.ros.org/ROS/Installation)
   - kinetic or newer
 - [UUV Simulator](https://uuvsimulator.github.io/)
-- [Geodetic Utils](https://github.com/fredvaz/geodetic_utils)
-- [BlueROV2](https://github.com/fredvaz/bluerov2)
+- [BlueROV2](https://github.com/fredvaz/bluerov2/tree/bluerov2_no_beacon)
 - [Minion USV](https://github.com/fredvaz/minion_usv)
 
 
