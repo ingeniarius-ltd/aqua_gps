@@ -22,6 +22,7 @@ This work is in development at [Ingeniarius, Lda.](http://ingeniarius.pt/) and [
 sudo apt install protobuf-compiler protobuf-c-compiler
 cd ~/catkin_ws/src
 git clone https://github.com/uuvsimulator/uuv_simulator.git
+git clone https://github.com/uuvsimulator/uuv_simulation_evaluation.git
 ```
 
 - [BlueROV2](https://github.com/fredvaz/bluerov2/tree/bluerov2_no_beacon):
