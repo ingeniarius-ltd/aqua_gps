@@ -27,7 +27,7 @@ Clone this package in the `src` folder of you catkin workspace
 
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/ingeniarius-ltd//aqua_gps.git
+git clone https://github.com/ingeniarius-ltd/aqua_gps.git
 ```
 
 and then build your catkin workspace
