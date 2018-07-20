@@ -1,0 +1,19 @@
+<launch>
+  <!-- Start a Helical Trajectory -->
+  <include file="$(find uuv_control_utils)/launch/start_helical_trajectory.launch">
+      <!-- <arg name="uuv_name" value="$(arg uuv_name)"/> -->
+      <arg name="uuv_name" value="rexrov2"/>
+      <arg name="start_time" default="18"/>
+      <arg name="radius" default="8"/>
+      <arg name="center_x" default="15"/>
+      <arg name="center_y" default="15"/>
+      <arg name="center_z" default="-15"/>
+      <arg name="n_points" default="50"/>
+      <arg name="n_turns" default="1"/>
+      <arg name="delta_z" default="10.0"/>
+      <!-- Heading offset given in degrees -->
+      <arg name="heading_offset" default="0"/>
+      <arg name="duration" default="150"/>
+      <arg name="max_forward_speed" default="0.3"/>
+  </include>
+</launch>

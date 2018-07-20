@@ -1,0 +1,155 @@
+<launch>
+  <!-- This launch file will start the controller nodes with the necessary parameters
+
+    Vehicle namespace: since the simulation can run with multiple vehicle, each vehicle
+    is created under a namespace, which is per default equal to the name of vehicle model, but
+    can be assigned differently at startup
+  -->
+  <!-- World Frame -->
+  <arg name="world_frame" default="world"/>
+  <!-- Reference Type -->
+  <arg name="use_ned_frame" default="false"/>
+  <!-- Teleop of Underwater Robot -->
+  <arg name="teleop_on" default="false"/>
+  <arg name="joy_id" default="0"/>
+  <!-- Upload URDF to RVIZ if not in Sim -->
+  <arg name="is_sim" default="true"/>
+
+
+  <!-- Name of the underwater robot -->
+  <arg name="uuv_name" default="bluerov2"/>
+  <!-- Names of the water surface robots -->
+  <arg name="usv_name_0" default="minion_usv_0"/>
+  <arg name="usv_name_1" default="minion_usv_1"/>
+  <arg name="usv_name_2" default="minion_usv_2"/>
+  <arg name="usv_name_3" default="minion_usv_3"/>
+  <!-- Underwater Vehicle initial pose -->
+  <arg name="x" default="15"/>
+  <arg name="y" default="15"/>
+  <arg name="z" default="-15"/>
+  <arg name="yaw" default="0.0"/>
+  <!-- Water Surface Vehicle's initial pose -->
+  <!-- Minion USV 0 -->
+  <arg name="x_0" default="0"/>
+  <arg name="y_0" default="0"/>
+  <arg name="z_0" default="0"/>
+  <arg name="yaw_0" default="0"/>
+  <!-- Minion USV 1 -->
+  <arg name="x_1" default="30"/>
+  <arg name="y_1" default="0"/>
+  <arg name="z_1" default="0"/>
+  <arg name="yaw_1" default="0"/>
+  <!-- Minion USV 2 -->
+  <arg name="x_2" default="30"/>
+  <arg name="y_2" default="30"/>
+  <arg name="z_2" default="0"/>
+  <arg name="yaw_2" default="0"/>
+  <!-- Minion USV 3 -->
+  <arg name="x_3" default="0"/>
+  <arg name="y_3" default="30"/>
+  <arg name="z_3" default="0"/>
+  <arg name="yaw_3" default="0"/>
+
+  <!-- Add Underwater Robot BlueROV2 to the world simulation -->
+  <!-- <include file="$(find bluerov2_gazebo)/launch/start_pid_controller_demo.launch">
+      <arg name="uuv_name" value="$(arg uuv_name)"/>
+      <arg name="namespace" value="$(arg uuv_name)"/>
+      <arg name="x" value="$(arg x)"/>
+      <arg name="y" value="$(arg y)"/>
+      <arg name="z" value="$(arg z)"/>
+      <arg name="yaw" value="$(arg yaw)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+      <arg name="teleop_on" value="$(arg teleop_on)"/>
+      <arg name="joy_id" value="$(arg joy_id)"/>
+  </include> -->
+
+
+  <!-- Add Underwater Robot RexROV2 to the world simulation -->
+  <include file="$(find rexrov2_description)/launch/upload_rexrov2.launch">
+      <!-- <arg name="world_frame" value="$(arg world_frame)"/> -->
+      <arg name="x" value="$(arg x)"/>
+      <arg name="y" value="$(arg y)"/>
+      <arg name="z" value="$(arg z)"/>
+      <arg name="yaw" value="$(arg yaw)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+  </include>
+
+  <include if="$(arg is_sim)" file="$(find rexrov2_control)/launch/start_pid_controller.launch">
+      <arg name="teleop_on" value="$(arg teleop_on)"/>
+      <arg name="joy_id" value="$(arg joy_id)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+  </include>
+
+
+  <!-- Add Water Surface Robot Minion USV 0 to the world simulation -->
+  <include file="$(find minion_usv_description)/launch/upload_minion_usv.launch">
+      <arg name="world_frame" value="$(arg world_frame)"/>
+      <arg name="namespace" value="$(arg usv_name_0)"/>
+      <arg name="x" value="$(arg x_0)"/>
+      <arg name="y" value="$(arg y_0)"/>
+      <arg name="z" value="$(arg z_0)"/>
+      <arg name="yaw" value="$(arg yaw_0)"/>
+  </include>
+
+  <include if="$(arg is_sim)" file="$(find minion_usv_control)/launch/start_pid_controller.launch">
+      <arg name="usv_name" value="$(arg usv_name_0)"/>
+      <arg name="teleop_on" value="$(arg teleop_on)"/>
+      <arg name="joy_id" value="$(arg joy_id)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+  </include>
+
+
+  <!-- Add Water Surface Robot Minion USV 1 to the world simulation -->
+  <include file="$(find minion_usv_description)/launch/upload_minion_usv.launch">
+      <arg name="world_frame" value="$(arg world_frame)"/>
+      <arg name="namespace" value="$(arg usv_name_1)"/>
+      <arg name="x" value="$(arg x_1)"/>
+      <arg name="y" value="$(arg y_1)"/>
+      <arg name="z" value="$(arg z_1)"/>
+      <arg name="yaw" value="$(arg yaw_1)"/>
+  </include>
+
+  <include if="$(arg is_sim)" file="$(find minion_usv_control)/launch/start_pid_controller.launch">
+      <arg name="usv_name" value="$(arg usv_name_1)"/>
+      <arg name="teleop_on" value="$(arg teleop_on)"/>
+      <arg name="joy_id" value="$(arg joy_id)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+  </include>
+
+
+  <!-- Add Water Surface Robot Minion USV 2 to the world simulation -->
+  <include file="$(find minion_usv_description)/launch/upload_minion_usv.launch">
+      <arg name="world_frame" value="$(arg world_frame)"/>
+      <arg name="namespace" value="$(arg usv_name_2)"/>
+      <arg name="x" value="$(arg x_2)"/>
+      <arg name="y" value="$(arg y_2)"/>
+      <arg name="z" value="$(arg z_2)"/>
+      <arg name="yaw" value="$(arg yaw_2)"/>
+  </include>
+
+  <include if="$(arg is_sim)" file="$(find minion_usv_control)/launch/start_pid_controller.launch">
+      <arg name="usv_name" value="$(arg usv_name_2)"/>
+      <arg name="teleop_on" value="$(arg teleop_on)"/>
+      <arg name="joy_id" value="$(arg joy_id)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+  </include>
+
+
+  <!-- Add Water Surface Robot Minion USV 3 to the world simulation -->
+  <include file="$(find minion_usv_description)/launch/upload_minion_usv.launch">
+      <arg name="world_frame" value="$(arg world_frame)"/>
+      <arg name="namespace" value="$(arg usv_name_3)"/>
+      <arg name="x" value="$(arg x_3)"/>
+      <arg name="y" value="$(arg y_3)"/>
+      <arg name="z" value="$(arg z_3)"/>
+      <arg name="yaw" value="$(arg yaw_3)"/>
+  </include>
+
+  <include if="$(arg is_sim)" file="$(find minion_usv_control)/launch/start_pid_controller.launch">
+      <arg name="usv_name" value="$(arg usv_name_3)"/>
+      <arg name="teleop_on" value="$(arg teleop_on)"/>
+      <arg name="joy_id" value="$(arg joy_id)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+  </include>
+
+</launch>

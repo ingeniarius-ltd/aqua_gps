@@ -1,0 +1,68 @@
+
+<launch>
+    <!-- This launch file will start the controller nodes with the necessary parameters
+
+      Vehicle namespace: since the simulation can run with multiple vehicle, each vehicle
+      is created under a namespace, which is per default equal to the name of vehicle model, but
+      can be assigned differently at startup
+    -->
+
+    <!-- World Base Reference Frame -->
+    <arg name="world_frame" default="world"/>
+    <!-- Reference Type -->
+    <arg name="use_ned_frame" default="false"/>
+
+    <!-- Set World Reference by a GPS Initial Robot Pose -->
+    <arg name="robot_name" default="minion_usv_0"/>
+
+    <!-- Manual World Reference -->
+    <arg name="manual_reference" default="false"/>
+    <arg name="gps_ref_latitude" default="0.0"/>
+    <arg name="gps_ref_longitude" default="0.0"/>
+    <arg name="gps_ref_altitude" default="0.0"/>
+
+
+    <!-- Start Helical Trajectory -->
+    <arg name="move" default="false"/>
+
+    <!-- Start RVIZ visualization -->
+    <arg name="rviz" default="false"/>
+
+    <!-- If you want to generate a ROS bag -->
+    <arg name="record" default="false"/>
+    <arg name="bag_sufix"/>
+
+
+    <!-- Start the a underwater world simulation scenario -->
+    <!-- <include file="$(find uuv_descriptions)/launch/ocean_waves.launch"/> -->
+    <include file="$(find uuv_descriptions)/launch/lake.launch"/>
+
+    <!-- Wait 5s -->
+    <include file="$(find uuv_simulation_wrapper)/launch/unpause_simulation.launch">
+        <arg name="timeout" value="15"/>
+    </include>
+
+    <!-- Upload Robots -->
+    <include file="$(find aqua_gps_demo)/launch/upload_robots.launch">
+      <arg name="world_frame" value="$(arg world_frame)"/>
+      <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+    </include>
+
+    <!-- Start a Helical Trajectory -->
+    <group if="$(arg move)">
+      <include file="$(find aqua_gps_demo)/launch/start_helical_trajectory.launch"/>
+    </group>
+
+    <!-- Open RViz for visualization of sensor data and visualization markers -->
+    <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz"
+          args="-d $(find aqua_gps_demo)/rviz/rexrov2_aqua_gps_demo.rviz" output="screen"/>
+
+    <!-- Recording the Simulation according to the record flag -->
+    <group if="$(arg record)">
+      <include file="$(find aqua_gps_demo)/launch/record_demo.launch">
+        <arg name="bag_sufix" default="$(arg bag_sufix)"/>
+        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+      </include>
+    </group>
+
+</launch>
