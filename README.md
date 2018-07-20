@@ -65,7 +65,7 @@ simulator Gazebo scenario, such as
 and then
 
 ```bash
-roslaunch aqua_gps_demo start_aqua_gps_demo.launch move:=true 
+roslaunch aqua_gps_demo start_aqua_gps_demo.launch
 ```
 
 ## License
