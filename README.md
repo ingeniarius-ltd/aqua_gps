@@ -27,14 +27,14 @@ Clone this package in the `src` folder of you catkin workspace
 
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/fredvaz/aqua_gps.git
+git clone https://github.com/ingeniarius-ltd//aqua_gps.git
 ```
 
 and then build your catkin workspace
 
 ```bash
 cd ~/catkin_ws
-catkin_make # or <catkin build>, if you are using catkin_tools
+catkin_make
 ```
 
 ## Running with UUV Simulator
@@ -45,11 +45,7 @@ simulator Gazebo scenario, such as
 and then
 
 ```bash
-roslaunch aqua_gps_demo start_aqua_gps_demo.launch move:=true record:=true bag_suffix:=Helical 
-```
-
-```bash
-roslaunch aqua_gps_localization start_aqua_gps.launch rviz:=true play:=true bag:=Sim_Helical 
+roslaunch aqua_gps_demo start_aqua_gps_demo.launch move:=true 
 ```
 
 ## License
