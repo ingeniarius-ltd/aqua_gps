@@ -57,7 +57,7 @@ cd ~/catkin_ws/src
 git clone https://github.com/ingeniarius-ltd/aqua_gps.git
 ```
 
-To install the simulator’s dependencies, you can run one of the following commands
+to install the simulator’s dependencies, you can run one of the following commands
 
 ```
 cd ~/catkin_ws
