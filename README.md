@@ -32,6 +32,14 @@ sudo apt-get install ros-kinetic-control-toolbox
 cd ~/catkin_ws/src
 git clone https://github.com/fredvaz/uuv_simulator.git
 git clone https://github.com/fredvaz/uuv_simulation_evaluation.git
+
+```
+
+to install the simulator’s dependencies, you can run one of the following commands
+
+```
+cd ~/catkin_ws
+rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
 ```
 
 - [RexROV2](https://github.com/fredvaz/rexrov2):
@@ -55,13 +63,6 @@ Clone this package in the `src` folder of you catkin workspace
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/ingeniarius-ltd/aqua_gps.git
-```
-
-to install the simulator’s dependencies, you can run one of the following commands
-
-```
-cd ~/catkin_ws
-rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
 ```
 
 and then build your catkin workspace
